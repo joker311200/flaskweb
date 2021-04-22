@@ -8,11 +8,11 @@ import base64
 import random
 from PIL import Image,ImageTk
 import tkinter as tk
-from cv2 import cv2
+
 import json
 from io import BytesIO ,BufferedReader
 import requests
-from skimage import io
+
 import datetime
 import time
 import shutil
@@ -21,18 +21,18 @@ app = Flask(__name__)
 clothesname = []
 i = []
 imagefolder = []
-url = "http://127.0.0.1:60882/detect"
+url = "http://127.0.0.1:5000/detect"
 # image1 = 'C:/Users/jack3/Desktop/DataSave/static/test1/'
 yolopath = 'C:/Users/jack3/Desktop/camtest/'
-path = 'C:/Users/jack3/Desktop/DataSave/static/img/'
+path = 'images/flaskcamera/'
 yolotype = '["overcoat","suit","shrit","short sleeve","vest","long sleeve","hoodie","dress","coat","polo shirt"]'
-allFileList = os.listdir(path)
+# allFileList = os.listdir(path)
 foldername = ""
 filecount = 0
 resulttxtC =0
 c = 0
-for file in allFileList:
-    imagefolder.append(file)
+# for file in path:
+#     imagefolder.append(file)
 
 if not os.path.isdir("./images/flaskcamera/"):
         os.mkdir("./images/flaskcamera/")
@@ -243,20 +243,16 @@ def ImgChange():
 @app.route("/", methods=['GET','POST'])
 
 def htmlimages():
-    foldername =imagefolder[0]
-    for filename in os.listdir(path+foldername+"/"):
-        fname = os.path.join(filename)
-        clothesname.append(fname)
      
-    imagepath01 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath02 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath03 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath04 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath05 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath06 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath07 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath08 = "/static/img/"+foldername+"/"+clothesname[0]
-    imagepath09 = "/static/img/"+foldername+"/"+clothesname[0]
+    imagepath01 = "static/img/test1/loading.jpg"
+    imagepath02 = "static/img/test1/loading.jpg"
+    imagepath03 = "static/img/test1/loading.jpg"
+    imagepath04 = "static/img/test1/loading.jpg"
+    imagepath05 = "static/img/test1/loading.jpg"
+    imagepath06 = "static/img/test1/loading.jpg"
+    imagepath07 = "static/img/test1/loading.jpg"
+    imagepath08 = "static/img/test1/loading.jpg"
+    imagepath09 = "static/img/test1/loading.jpg"
 
 
     return render_template('webtest.html', images01 = imagepath01, images02 = imagepath02, images03 = imagepath03, images04 = imagepath04, images05 = imagepath05, images06 = imagepath06, images07 = imagepath07, images08 = imagepath08, images09 = imagepath09)
