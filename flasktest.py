@@ -1,6 +1,6 @@
 from flask import Flask  , request, make_response,  jsonify,abort
 from flask import render_template
-from flask_script import Manager
+
 
 import os
 import re
